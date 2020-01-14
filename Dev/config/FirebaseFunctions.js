@@ -1,0 +1,1 @@
+//This file will contain all of the functions that are going to interact with Firebase throughout the project
