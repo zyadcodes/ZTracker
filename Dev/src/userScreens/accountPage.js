@@ -1,0 +1,1 @@
+//This is the screen where the user will be able to log out, or update any information such as their name or password

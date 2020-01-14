@@ -17,6 +17,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ZTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ZTrackerTests.m */; };
+		9BEE73BA23CD8A550088368F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BEE73B923CD8A550088368F /* GoogleService-Info.plist */; };
 		D79057B59736B8C09C7AF6D6 /* libPods-ZTrackerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC67413B4B95722A07E5B72 /* libPods-ZTrackerTests.a */; };
 		E76EE0F8BD7109C6E8D85B90 /* libPods-ZTracker-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F458196CB25ED688053132EE /* libPods-ZTracker-tvOSTests.a */; };
 		F48898BD0F066D9169D803E3 /* libPods-ZTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C20A854CF8DF56A85C05E6EB /* libPods-ZTracker.a */; };
@@ -59,6 +60,7 @@
 		34562FEE990BC11555513A5D /* Pods-ZTracker-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTracker-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ZTracker-tvOS/Pods-ZTracker-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3D430E321621390D739EA41E /* Pods-ZTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-ZTrackerTests/Pods-ZTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		76E254DCA811DEB632392942 /* Pods-ZTracker-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTracker-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ZTracker-tvOSTests/Pods-ZTracker-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9BEE73B923CD8A550088368F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A13072CE303DBC193F578EA6 /* Pods-ZTracker-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTracker-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ZTracker-tvOS/Pods-ZTracker-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		C20A854CF8DF56A85C05E6EB /* libPods-ZTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36FBD47385143B3B5019336 /* Pods-ZTracker-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTracker-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ZTracker-tvOSTests/Pods-ZTracker-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,13 +136,13 @@
 				23669D8E2C89836A15C134C9 /* Pods-ZTrackerTests.debug.xcconfig */,
 				3D430E321621390D739EA41E /* Pods-ZTrackerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* ZTracker */ = {
 			isa = PBXGroup;
 			children = (
+				9BEE73B923CD8A550088368F /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -309,6 +311,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -339,6 +342,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				9BEE73BA23CD8A550088368F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

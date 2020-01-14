@@ -34,11 +34,11 @@ target 'ZTracker' do
 
   # External Pods added by Developer
   # Firebase Pods
-  pod 'Firebase/Core', '~> 6.3.0'
+  pod 'Firebase/Core', '~> 6.13.0'
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Auth', '~> 6.3.0'
-  pod 'Firebase/Firestore', '~> 6.3.0'
-  pod 'Firebase/Functions', '~> 6.3.0'
+  pod 'Firebase/Auth', '~> 6.13.0'
+  pod 'Firebase/Firestore', '~> 6.13.0'
+  pod 'Firebase/Functions', '~> 6.13.0'
 
   target 'ZTrackerTests' do
     inherit! :search_paths
