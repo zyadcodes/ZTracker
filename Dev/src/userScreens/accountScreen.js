@@ -1,5 +1,4 @@
-//This is the landing screen of the app when a user is logged into the app. It'll display graphs of the profit,
-//revenue, and expenses for the given user
+//This is the screen where the user will be able to log out, or update any information such as their name or password
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import strings from 'config/strings';
@@ -8,7 +7,7 @@ import fontStyles from 'config/fontStyles';
 import screenStyle from 'config/screenStyle';
 
 //creates the class
-export default class dashboard extends Component {
+export default class accountScreen extends Component {
 	//Renders the class
 	render() {
 		return (
@@ -21,7 +20,7 @@ export default class dashboard extends Component {
 						alignItems: 'center',
 						alignSelf: 'center'
 					}}>
-					<Text style={fontStyles.bigSubTitleStyleWhite}>{strings.Dashboard}</Text>
+					<Text style={fontStyles.bigSubTitleStyleWhite}>{strings.Account}</Text>
 				</View>
 			</View>
 		);

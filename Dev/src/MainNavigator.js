@@ -1,9 +1,12 @@
 //This will be the main naivgator that the app will use to navigate between the STACK screens. The rest of the app
 //will be through a bottom tab navigator
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import logInScreen from './authenticationScreens/logInScreen';
 import splashScreen from './authenticationScreens/splashScreen';
 import signUpScreen from './authenticationScreens/signUpScreen';
+import resetPasswordScreen from './authenticationScreens/resetPasswordScreen';
+import userTabNavigator from './userScreens/userTabNavigator';
 
 //The route config for all of the screens
 const routeConfig = {
@@ -11,7 +14,7 @@ const routeConfig = {
 	SplashScreen: {
 		screen: splashScreen,
 		navigationOptions: ({ navigation }) => ({
-			gesturesEnabled: false
+			gestureEnabled: false
 		})
 	},
 
@@ -19,14 +22,31 @@ const routeConfig = {
 	LogInScreen: {
 		screen: logInScreen,
 		navigationOptions: ({ navigation }) => ({
-			gesturesEnabled: false
+			gestureEnabled: false
 		})
 	},
+
 	//Takes you to the sign up screen of the app
 	SignUpScreen: {
 		screen: signUpScreen,
 		navigationOptions: ({ navigation }) => ({
-			gesturesEnabled: false
+			gestureEnabled: false
+		})
+	},
+
+	//Takes you to the reset password screen
+	ResetPasswordScreen: {
+		screen: resetPasswordScreen,
+		navigationOptions: ({ navigation }) => ({
+			gestureEnabled: false
+		})
+	},
+
+	//Takes you to the user screens
+	UserScreens: {
+		screen: userTabNavigator,
+		navigationOptions: ({ navigation }) => ({
+			gestureEnabled: false
 		})
 	}
 };

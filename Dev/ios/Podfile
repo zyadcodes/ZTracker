@@ -40,6 +40,7 @@ target 'ZTracker' do
   pod 'Firebase/Firestore', '~> 6.13.0'
   pod 'Firebase/Functions', '~> 6.13.0'
 
+
   target 'ZTrackerTests' do
     inherit! :search_paths
     # Pods for testing
