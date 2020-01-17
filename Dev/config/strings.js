@@ -19,6 +19,19 @@ export default {
 	Password: 'Password',
 	EnterYourPasswordDotDotDot: 'Enter your password...',
 
+	//------------------------- Add Screen -------------------------
+	Type: 'Type',
+	Revenue: 'Revenue',
+	Expense: 'Expense',
+	Date: 'Date',
+	Amount: 'Amount',
+	Notes: 'Notes',
+	DollarSign: '$',
+	AmountPlaceholder: 'e.g. 1234',
+	AnyAdditionalNotesDotDotDot: 'Optional additional notes...',
+	EntryAdded: 'The entry has been added',
+	Added: 'Added',
+
 	//------------------------- Account Screen -------------------------
 	Save: 'Save',
 	AccountHasBeenSaved: 'Your account info has been saved',
@@ -40,7 +53,7 @@ export default {
 	IncorrentEmailPassword: 'Incorrect email or password',
 
 	//------------------------- Bottom Tab -------------------------
-	Account:  'Account',
+	Account: 'Account',
 	Dashboard: 'Dashboard',
 	History: 'History',
 	Add: 'Add',

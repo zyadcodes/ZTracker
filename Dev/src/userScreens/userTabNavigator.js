@@ -15,12 +15,13 @@ import { screenHeight } from 'config/dimensions';
 //The route configurations
 const routeConfig = {
 
-	AddScreen: {
-		screen: addScreen,
+
+	HistoryScreen: {
+		screen: historyScreen,
 		navigationOptions: {
-			tabBarLabel: strings.Add,
+			tabBarLabel: strings.History,
 			tabBarIcon: ({ tintColor, focused }) => (
-				<Icon name='plus-square' size={30} type='font-awesome' color={tintColor} />
+				<Icon name='table' size={30} type='font-awesome' color={tintColor} />
 			)
 		}
 	},
@@ -33,13 +34,12 @@ const routeConfig = {
 			)
 		}
 	},
-
-	HistoryScreen: {
-		screen: historyScreen,
+	AddScreen: {
+		screen: addScreen,
 		navigationOptions: {
-			tabBarLabel: strings.History,
+			tabBarLabel: strings.Add,
 			tabBarIcon: ({ tintColor, focused }) => (
-				<Icon name='table' size={30} type='font-awesome' color={tintColor} />
+				<Icon name='plus-square' size={30} type='font-awesome' color={tintColor} />
 			)
 		}
 	},
