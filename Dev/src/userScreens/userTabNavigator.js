@@ -14,12 +14,13 @@ import { screenHeight } from 'config/dimensions';
 
 //The route configurations
 const routeConfig = {
-	AccountScreen: {
-		screen: accountScreen,
+
+	AddScreen: {
+		screen: addScreen,
 		navigationOptions: {
-			tabBarLabel: strings.Account,
+			tabBarLabel: strings.Add,
 			tabBarIcon: ({ tintColor, focused }) => (
-				<Icon name='calendar-check-o' size={20} type='font-awesome' color={tintColor} />
+				<Icon name='plus-square' size={30} type='font-awesome' color={tintColor} />
 			)
 		}
 	},
@@ -28,16 +29,7 @@ const routeConfig = {
 		navigationOptions: {
 			tabBarLabel: strings.Dashboard,
 			tabBarIcon: ({ tintColor, focused }) => (
-				<Icon name='feather' size={20} type='material-community' color={tintColor} />
-			)
-		}
-	},
-	AddScreen: {
-		screen: addScreen,
-		navigationOptions: {
-			tabBarLabel: strings.Add,
-			tabBarIcon: ({ tintColor, focused }) => (
-				<Icon name='group' size={20} type='font-awesome' color={tintColor} />
+				<Icon name='chart-line' size={30} type='material-community' color={tintColor} />
 			)
 		}
 	},
@@ -47,10 +39,19 @@ const routeConfig = {
 		navigationOptions: {
 			tabBarLabel: strings.History,
 			tabBarIcon: ({ tintColor, focused }) => (
-				<Icon name='feather' size={20} type='material-community' color={tintColor} />
+				<Icon name='table' size={30} type='font-awesome' color={tintColor} />
 			)
 		}
-	}
+	},
+	AccountScreen: {
+		screen: accountScreen,
+		navigationOptions: {
+			tabBarLabel: strings.Account,
+			tabBarIcon: ({ tintColor, focused }) => (
+				<Icon name='user' size={30} type='font-awesome' color={tintColor} />
+			)
+		}
+	},
 };
 
 const navigatorConfig = {

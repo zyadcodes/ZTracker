@@ -99,6 +99,15 @@ exports.getUserByID = functions.https.onCall(async (request, response) => {
 
 });
 
+//This function is  going to take in a user's ID & an object and is going to update the user's document with those documents
+exports.updateUserByID = functions.https.onCall(async (request, response) => {
+
+    const { userID, updates } = request;
+    await firestore.collection('users').doc(userID).update(updates);
+    return 0;
+
+});
+
 //This function is going to take in a user's ID and an month and return that month document. If it doesn't
 //exist, -1 will be returned
 exports.getMonthByID = functions.https.onCall(async (request, response) => {

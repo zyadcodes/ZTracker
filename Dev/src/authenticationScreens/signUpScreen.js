@@ -28,7 +28,7 @@ export default class signUpScreen extends Component {
 		emailError: false,
 		passwordMatchError: false,
 		passwordError: false,
-		emailExistsError: false,
+		emailExistsError: false
 	};
 
 	//This method will check that all fields are what they're supposed be, and then create the user if they are
@@ -61,11 +61,16 @@ export default class signUpScreen extends Component {
 			if (userID === -1) {
 				this.setState({ emailExistsError: true, isLoading: false });
 			} else {
+				//Fetches the user's data
+				const user = await FirebaseFunctions.call('getUserByID', {
+					userID
+				});
 				this.setState({
 					isLoading: false
 				});
-				this.props.navigation.push("UserScreens", {
-					userID
+				this.props.navigation.push('UserScreens', {
+					userID,
+					user
 				});
 			}
 		}
@@ -188,8 +193,7 @@ export default class signUpScreen extends Component {
 					message={strings.ShortPassword}
 				/>
 				<ZAlert
-					isVisible={this.state.
-					emailExistsError}
+					isVisible={this.state.emailExistsError}
 					onPress={() => {
 						this.setState({ emailExistsError: false });
 					}}

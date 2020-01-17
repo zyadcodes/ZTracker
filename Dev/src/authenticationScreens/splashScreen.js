@@ -12,6 +12,7 @@ import colors from 'config/colors';
 
 //creates the exports the class
 export default class splashScreen extends Component {
+
 	//Renders the screen
 	render() {
 		return (

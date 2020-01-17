@@ -17,11 +17,10 @@ export default class FirebaseFunctions {
 	//This method is going to log the user into their account. It will return the user's ID. If the user doesn't exist, the
 	//method will return -1;
 	static async logIn(email, password) {
-		const doesExist = await this.auth.fetchSignInMethodsForEmail(email);
-		if (doesExist.length > 0) {
+		try {
 			const account = await this.auth.signInWithEmailAndPassword(email, password);
 			return account.user.uid;
-		} else {
+		} catch (error) {
 			return -1;
 		}
 	}
@@ -43,6 +42,12 @@ export default class FirebaseFunctions {
 			});
 			return userID;
 		}
+	}
+
+	//This method is going to log the current user out of firebase
+	static async logOut() {
+		await this.auth.signOut();
+		return 0;
 	}
 
 	//this method is going to take in an email and attempt to send a password reset email. This is not async

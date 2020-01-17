@@ -24,6 +24,7 @@ class ZButton extends Component {
 					onPress={() => {
 						onPress();
 					}}
+					disabled={isLoading === true ? true : false}
 					style={{
 						width: screenWidth * 0.8,
 						justifyContent: 'center',

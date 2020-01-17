@@ -40,6 +40,9 @@ target 'ZTracker' do
   pod 'Firebase/Firestore', '~> 6.13.0'
   pod 'Firebase/Functions', '~> 6.13.0'
 
+  # Other library pods
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
 
   target 'ZTrackerTests' do
     inherit! :search_paths

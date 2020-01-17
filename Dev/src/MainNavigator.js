@@ -1,15 +1,25 @@
 //This will be the main naivgator that the app will use to navigate between the STACK screens. The rest of the app
 //will be through a bottom tab navigator
-import { createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator, TransitionPresets } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import logInScreen from './authenticationScreens/logInScreen';
 import splashScreen from './authenticationScreens/splashScreen';
 import signUpScreen from './authenticationScreens/signUpScreen';
 import resetPasswordScreen from './authenticationScreens/resetPasswordScreen';
 import userTabNavigator from './userScreens/userTabNavigator';
+import launchScreen from './authenticationScreens/launchScreen';
 
 //The route config for all of the screens
 const routeConfig = {
+	//Route leads to the launch screen
+	LaunchScreen: {
+		screen: launchScreen,
+		navigationOptions: {
+			gestureEnabled: false,
+			...TransitionPresets.ScaleFromCenterAndroid
+		}
+	},
+
 	//Takes you to the splash screen of the app
 	SplashScreen: {
 		screen: splashScreen,
@@ -46,15 +56,16 @@ const routeConfig = {
 	UserScreens: {
 		screen: userTabNavigator,
 		navigationOptions: ({ navigation }) => ({
-			gestureEnabled: false
+			gestureEnabled: false,
+			
 		})
 	}
 };
 
 //The navigation config containing the initial route name
 const navigatorConfig = {
-	initialRouteName: 'SplashScreen',
-	headerMode: 'none'
+	initialRouteName: 'LaunchScreen',
+	headerMode: 'none',
 };
 
 //Creates & exports the stack navigator

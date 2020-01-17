@@ -19,6 +19,12 @@ export default {
 	Password: 'Password',
 	EnterYourPasswordDotDotDot: 'Enter your password...',
 
+	//------------------------- Account Screen -------------------------
+	Save: 'Save',
+	AccountHasBeenSaved: 'Your account info has been saved',
+	AccountSaved: 'Account saved',
+	LogOut: 'Log Out',
+
 	//------------------------- Forgot Password Screen -------------------------
 	ResetPassword: 'Reset Password',
 	EmailSent:
