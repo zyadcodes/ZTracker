@@ -8,6 +8,7 @@ import signUpScreen from './authenticationScreens/signUpScreen';
 import resetPasswordScreen from './authenticationScreens/resetPasswordScreen';
 import userTabNavigator from './userScreens/userTabNavigator';
 import launchScreen from './authenticationScreens/launchScreen';
+import specificMonthScreen from './userScreens/specificMonthScreen';
 
 //The route config for all of the screens
 const routeConfig = {
@@ -15,8 +16,7 @@ const routeConfig = {
 	LaunchScreen: {
 		screen: launchScreen,
 		navigationOptions: {
-			gestureEnabled: false,
-			...TransitionPresets.ScaleFromCenterAndroid
+			gestureEnabled: false
 		}
 	},
 
@@ -52,12 +52,18 @@ const routeConfig = {
 		})
 	},
 
+	SpecificMonthScreen: {
+		screen: specificMonthScreen,
+		navigationOptions: ({ navigation }) => ({
+			gestureEnabled: false
+		})
+	},
+
 	//Takes you to the user screens
 	UserScreens: {
 		screen: userTabNavigator,
 		navigationOptions: ({ navigation }) => ({
-			gestureEnabled: false,
-			
+			gestureEnabled: false
 		})
 	}
 };
@@ -65,7 +71,7 @@ const routeConfig = {
 //The navigation config containing the initial route name
 const navigatorConfig = {
 	initialRouteName: 'LaunchScreen',
-	headerMode: 'none',
+	headerMode: 'none'
 };
 
 //Creates & exports the stack navigator

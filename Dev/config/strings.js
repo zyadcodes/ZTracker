@@ -38,6 +38,10 @@ export default {
 	Expenses: 'Expenses',
 	Profit: 'Profit',
 
+	//------------------------- Specific Month Screen -------------------------
+	Amt: 'Amt',
+	None: 'None',
+
 	//------------------------- Account Screen -------------------------
 	Save: 'Save',
 	AccountHasBeenSaved: 'Your account info has been saved',

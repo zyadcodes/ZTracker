@@ -1,6 +1,6 @@
 //This is the screen where the user will be able to log out, or update any information such as their name or password
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import strings from 'config/strings';
 import { screenHeight, screenWidth } from 'config/dimensions';
 import fontStyles from 'config/fontStyles';
@@ -14,10 +14,21 @@ import FirebaseFunctions from 'config/FirebaseFunctions';
 
 //creates the class
 export default class accountScreen extends Component {
+	//Fetches the name of the user
+	async componentDidMount() {
+		const { userID } = this.props.navigation.state.params;
+		const user = await FirebaseFunctions.call('getUserByID', { userID });
+		this.setState({
+			isScreenLoading: false,
+			name: user.name
+		});
+	}
+
 	//Controls the state of the text field
 	state = {
-		name: this.props.navigation.state.params.user.name,
+		name: '',
 		isLoading: false,
+		isScreenLoading: true,
 		/* This controls the displaying of the alert that verifies the account has been saved */
 		isAccountSavedVisible: false,
 		fieldsError: false
@@ -44,12 +55,13 @@ export default class accountScreen extends Component {
 			this.setState({
 				isLoading: false,
 				isAccountSavedVisible: true
-			})
+			});
 		}
 	}
 
 	//Renders the class
 	render() {
+		const { isScreenLoading } = this.state;
 		return (
 			<View style={screenStyle.container}>
 				<View
@@ -62,39 +74,45 @@ export default class accountScreen extends Component {
 					}}>
 					<Text style={fontStyles.bigSubTitleStyleWhite}>{strings.Account}</Text>
 				</View>
-				<View style={{ marginBottom: screenHeight * 0.05 }}>
-					<Icon type={'font-awesome'} size={65} color={colors.green} name={'money'} />
-				</View>
-				<View style={{ marginBottom: screenHeight * 0.05 }}>
-					<ZTextInput
-						title={strings.Name}
-						placeholder={strings.EnterYourNameDotDotDot}
-						onChangeText={(text) => {
-							this.setState({ name: text });
-						}}
-						value={this.state.name}
-					/>
-				</View>
-				<View style={{ marginBottom: screenHeight * 0.25 }}>
-					<ZButton
-						text={strings.Save}
-						onPress={() => {
-							//Saves the account information for the user
-							this.saveUser();
-						}}
-						isLoading={this.state.isLoading}
-					/>
-				</View>
-				<View>
-					<ZButton
-						text={strings.LogOut}
-						onPress={() => {
-							//Logs the user out
-							FirebaseFunctions.logOut();
-							this.props.navigation.push('SplashScreen');
-						}}
-					/>
-				</View>
+				{isScreenLoading === true ? (
+					<ActivityIndicator size={'large'} animating={true} color={colors.green} />
+				) : (
+					<View>
+						<View style={{ marginBottom: screenHeight * 0.05 }}>
+							<Icon type={'font-awesome'} size={65} color={colors.green} name={'money'} />
+						</View>
+						<View style={{ marginBottom: screenHeight * 0.05 }}>
+							<ZTextInput
+								title={strings.Name}
+								placeholder={strings.EnterYourNameDotDotDot}
+								onChangeText={(text) => {
+									this.setState({ name: text });
+								}}
+								value={this.state.name}
+							/>
+						</View>
+						<View style={{ marginBottom: screenHeight * 0.25 }}>
+							<ZButton
+								text={strings.Save}
+								onPress={() => {
+									//Saves the account information for the user
+									this.saveUser();
+								}}
+								isLoading={this.state.isLoading}
+							/>
+						</View>
+						<View>
+							<ZButton
+								text={strings.LogOut}
+								onPress={() => {
+									//Logs the user out
+									FirebaseFunctions.logOut();
+									this.props.navigation.push('SplashScreen');
+								}}
+							/>
+						</View>
+					</View>
+				)}
 				{/* The following will be all the alerts for this screen  */}
 				<ZAlert
 					isVisible={this.state.isAccountSavedVisible}

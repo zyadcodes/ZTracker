@@ -2,7 +2,14 @@
 //show the month, revenue, expense, and revenue according the user's selection. It'll be customizable based on what
 //the user wants to view specifically.
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, ScrollView, RefreshControl } from 'react-native';
+import {
+	View,
+	Text,
+	ActivityIndicator,
+	ScrollView,
+	RefreshControl,
+	TouchableOpacity
+} from 'react-native';
 import strings from 'config/strings';
 import { screenHeight, screenWidth } from 'config/dimensions';
 import fontStyles from 'config/fontStyles';
@@ -22,6 +29,48 @@ export default class historyScreen extends Component {
 		refreshing: false
 	};
 
+	//This method is going to convert a month's numeric value to it's actual name string. 2020-02 would be "Feb 2020"
+	convertMonthToString(date) {
+		let year = date.substring(0, date.indexOf('-'));
+		year = year.substring(2);
+		let monthNum = date.substring(date.indexOf('-') + 1);
+		if (monthNum.charAt(0) === '0') {
+			monthNum = monthNum.charAt(1);
+		}
+		const monthsArr = [
+			'Jan',
+			'Feb',
+			'Mar',
+			'Apr',
+			'May',
+			'Jun',
+			'Jul',
+			'Aug',
+			'Sep',
+			'Oct',
+			'Nov',
+			'Dec'
+		];
+		monthNum = parseInt(monthNum);
+		const month = monthsArr[monthNum - 1];
+		return month + " '" + year;
+	}
+
+	//This method is going to generate the TouchableOpacities for each row's text
+	getTouchableOpacity(text, onPress) {
+		return (
+			<TouchableOpacity onPress={() => onPress()}>
+				<Text
+					style={[
+						fontStyles.mainTextStyleWhite,
+						{ marginHorizontal: screenWidth * 0.02, marginVertical: screenHeight * 0.01 }
+					]}>
+					{text}
+				</Text>
+			</TouchableOpacity>
+		);
+	}
+
 	//This method is going to fetch the history of the current user
 	async componentDidMount() {
 		const { userID } = this.props.navigation.state.params;
@@ -30,7 +79,32 @@ export default class historyScreen extends Component {
 		//Constructs the data
 		const tableData = [];
 		for (const month of allMonths) {
-			const monthData = [month.month, month.revenue, month.expenses, month.profit];
+			const monthData = [
+				this.getTouchableOpacity(this.convertMonthToString(month.month), () => {
+					this.props.navigation.push('SpecificMonthScreen', {
+						month: month,
+						userID
+					});
+				}),
+				this.getTouchableOpacity('$' + month.revenue, () => {
+					this.props.navigation.push('SpecificMonthScreen', {
+						month: month,
+						userID
+					});
+				}),
+				this.getTouchableOpacity('$' + month.expenses, () => {
+					this.props.navigation.push('SpecificMonthScreen', {
+						month: month,
+						userID
+					});
+				}),
+				this.getTouchableOpacity('$' + month.profit, () => {
+					this.props.navigation.push('SpecificMonthScreen', {
+						month: month,
+						userID
+					});
+				})
+			];
 			tableData.push(monthData);
 		}
 		this.setState({
@@ -76,7 +150,14 @@ export default class historyScreen extends Component {
 						<Text style={fontStyles.bigSubTitleStyleWhite}>{strings.History}</Text>
 					</View>
 					{isScreenLoading === true ? (
-						<ActivityIndicator size={'large'} animating={true} color={colors.green} />
+						<View
+							style={{
+								justifyContent: 'center',
+								alignItems: 'center',
+								marginTop: screenHeight * 0.15
+							}}>
+							<ActivityIndicator size={'large'} animating={true} color={colors.green} />
+						</View>
 					) : (
 						<View style={{ width: screenWidth * 0.98 }}>
 							<Table borderStyle={{ borderWidth: 2, borderColor: colors.green }}>
@@ -84,10 +165,7 @@ export default class historyScreen extends Component {
 									data={this.state.tableTitles}
 									textStyle={[fontStyles.mainTextStyleWhite, { margin: 5 }]}
 								/>
-								<Rows
-									data={this.state.tableData}
-									textStyle={[fontStyles.subTextStyleWhite, { margin: 5 }]}
-								/>
+								<Rows data={this.state.tableData} />
 							</Table>
 						</View>
 					)}
