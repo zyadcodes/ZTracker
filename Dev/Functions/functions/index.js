@@ -34,8 +34,7 @@ exports.addUserToFirestore = functions.https.onCall(async (request, response) =>
 //This function is going to add an entry into the subcollection of the database according to its month. It will take in
 //parameters of the entry type, a date, an amountt, and notes & a user ID
 exports.addEntry = functions.https.onCall(async (request, response) => {
-	console.log(1);
-	const { type, date, amount, notes, userID } = request;
+	let { type, date, amount, notes, userID } = request;
 	const entry = {
 		type,
 		date,
@@ -43,19 +42,15 @@ exports.addEntry = functions.https.onCall(async (request, response) => {
 		notes,
 		userID
 	};
-	console.log(2);
 	//Retrieves what the month is. The entered format is 2020-10-31
 	const month = date.substring(0, date.lastIndexOf('-'));
-	console.log(3);
 	//Updates the month with the new revenue and the profit and the cost
 	const doc = firestore
 		.collection('users')
 		.doc(userID)
 		.collection('months')
 		.doc(month);
-	console.log(4);
 	const docGet = await doc.get();
-	console.log(5);
 	let revenue = '';
 	let expenses = '';
 	let profit = '';
@@ -75,34 +70,26 @@ exports.addEntry = functions.https.onCall(async (request, response) => {
 		expenses = docData.expenses;
 		profit = docData.profit;
 	}
-	console.log(8);
 	if (type === 'revenue') {
 		revenue += amount;
-		console.log(9);
 	} else {
 		expenses += amount;
-		console.log(10);
 	}
-	console.log(11);
-	profit = revenue - expenses;
-	console.log(12);
+	profit = (revenue - expenses)
 	await doc.update({
-		revenue,
-		expenses,
-		profit
+		revenue: revenue,
+		expenses: expenses,
+		profit: profit
 	});
-	console.log(13);
 	//Adds the entry to the doc's subcollection
 	const newEntry = await doc.collection('entries').add({
 		...entry,
 		month
 	});
-	console.log(14);
 	//Adds the entryID to the docment as well
 	await newEntry.update({
 		entryID: newEntry.id
 	});
-	console.log(15);
 
 	return 0;
 });

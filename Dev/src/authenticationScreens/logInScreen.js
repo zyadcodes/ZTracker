@@ -37,16 +37,11 @@ export default class logInScreen extends Component {
 			if (userID === -1) {
 				this.setState({ isLoading: false, incorrectInfoError: true });
 			} else {
-				//Fetches the user's data
-				const user = await FirebaseFunctions.call('getUserByID', {
-					userID
-				});
 				this.setState({
 					isLoading: false
 				});
 				this.props.navigation.push('UserScreens', {
-					userID,
-					user
+					userID
 				});
 			}
 		}

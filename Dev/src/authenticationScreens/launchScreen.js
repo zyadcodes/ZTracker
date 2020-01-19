@@ -28,13 +28,8 @@ export default class launchScreen extends Component {
 				alreadyCalled = true;
 				if (user) {
 					const { uid } = user;
-					//Fetches the user's data & then navigates the user screens
-					const userObject = await FirebaseFunctions.call('getUserByID', {
-						userID: uid
-					});
 					this.props.navigation.push('UserScreens', {
 						userID: uid,
-						user: userObject
 					});
 				} else {
 					this.props.navigation.push('SplashScreen');

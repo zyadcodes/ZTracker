@@ -32,6 +32,12 @@ export default {
 	EntryAdded: 'The entry has been added',
 	Added: 'Added',
 
+	//------------------------- History Screen -------------------------
+	Month: 'Month',
+	Revenue: 'Revenue',
+	Expenses: 'Expenses',
+	Profit: 'Profit',
+
 	//------------------------- Account Screen -------------------------
 	Save: 'Save',
 	AccountHasBeenSaved: 'Your account info has been saved',

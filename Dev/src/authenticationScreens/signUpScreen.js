@@ -61,16 +61,11 @@ export default class signUpScreen extends Component {
 			if (userID === -1) {
 				this.setState({ emailExistsError: true, isLoading: false });
 			} else {
-				//Fetches the user's data
-				const user = await FirebaseFunctions.call('getUserByID', {
-					userID
-				});
 				this.setState({
 					isLoading: false
 				});
 				this.props.navigation.push('UserScreens', {
-					userID,
-					user
+					userID
 				});
 			}
 		}
