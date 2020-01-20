@@ -1,34 +1,58 @@
 {
   "images" : [
     {
+      "size" : "20x20",
       "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_40x40.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_1_60x60.png",
+      "scale" : "3x"
+    },
+    {
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "59.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_3_87x87.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_4_80x80.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_5_120x120.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_5_120x120-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_6_180x180.png",
       "scale" : "3x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "Screen_Shot_2020-01-20_at_2.24.19_PM_7_1024x1024.png",
+      "scale" : "1x"
     }
   ],
   "info" : {
