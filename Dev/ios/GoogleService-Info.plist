@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>105247919741-6gjgo4jj0dr0pcf11kmjolep960e6vel.apps.googleusercontent.com</string>
+	<string>105247919741-8o58ut01tu0ujecd8lbvn0nf9ag3h9a6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.105247919741-6gjgo4jj0dr0pcf11kmjolep960e6vel</string>
+	<string>com.googleusercontent.apps.105247919741-8o58ut01tu0ujecd8lbvn0nf9ag3h9a6</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCbPrEUTb8K3w4aGqidJfLtyvRMU2it1QA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Help.ZTracker</string>
+	<string>com.ZTracker.ZTracker</string>
 	<key>PROJECT_ID</key>
 	<string>ztracker-d9d96</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:105247919741:ios:df52bc39a4b0883069ab14</string>
+	<string>1:105247919741:ios:6cc5c3276d00245f69ab14</string>
 	<key>DATABASE_URL</key>
 	<string>https://ztracker-d9d96.firebaseio.com</string>
 </dict>
