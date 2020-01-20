@@ -67,6 +67,8 @@ export default {
 	ShortPassword: 'Your password must be at least 7 characters',
 	EmailExists: 'This email is already registered with an account. Go back & log into it',
 	IncorrentEmailPassword: 'Incorrect email or password',
+	Restart: 'Restart',
+	AppWillRestart: 'The app will restart to install an update',
 
 	//------------------------- Bottom Tab -------------------------
 	Account: 'Account',

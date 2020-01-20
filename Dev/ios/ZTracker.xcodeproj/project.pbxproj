@@ -725,6 +725,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = ZTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -744,6 +745,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ZTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
