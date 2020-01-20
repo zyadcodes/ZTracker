@@ -75,7 +75,7 @@ export default class historyScreen extends Component {
 	async componentDidMount() {
 		const { userID } = this.props.navigation.state.params;
 		const allMonths = await FirebaseFunctions.call('getAllMonthsByID', { userID });
-
+		allMonths.reverse();
 		//Constructs the data
 		const tableData = [];
 		for (const month of allMonths) {
