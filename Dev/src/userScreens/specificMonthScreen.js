@@ -28,6 +28,9 @@ export default class specificMonthScreen extends Component {
 			userID,
 			month: month.month
 		});
+		entries.sort((a, b) => {
+			return a.date.localeCompare(b.date);
+		})
 		//Constructs the table's data
 		const tableData = [];
 		for (const entry of entries) {
