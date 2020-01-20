@@ -75,7 +75,14 @@ export default class accountScreen extends Component {
 					<Text style={fontStyles.bigSubTitleStyleWhite}>{strings.Account}</Text>
 				</View>
 				{isScreenLoading === true ? (
-					<ActivityIndicator size={'large'} animating={true} color={colors.green} />
+					<View
+						style={{
+							justifyContent: 'center',
+							alignItems: 'center',
+							marginTop: screenHeight * 0.15
+						}}>
+						<ActivityIndicator size={'large'} animating={true} color={colors.green} />
+					</View>
 				) : (
 					<View>
 						<View style={{ marginBottom: screenHeight * 0.05 }}>

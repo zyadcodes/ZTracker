@@ -16,6 +16,7 @@ if (pixelRatio < 3) {
 
 const bigFontSize = baseFontSize * 1.2;
 const subTextFontSize = baseFontSize * 0.9;
+const smallTextFontSize = baseFontSize * 0.8;
 const subTitleFontSize = baseFontSize * 2.2;
 const bigTitleFontSize = baseFontSize * 4.4;
 
@@ -99,6 +100,14 @@ export default StyleSheet.create({
 		fontWeight: 'bold'
 	},
 
+	//The style for all small text that is white
+	subTextStyleNoColor: {
+		fontFamily: font,
+		fontSize: smallTextFontSize,
+		color: colors.white,
+		fontWeight: 'bold'
+	},
+
 	//The style for all big green title texts
 	bigTitleStyleGreen: {
 		fontFamily: font,
@@ -120,6 +129,6 @@ export default StyleSheet.create({
 		fontFamily: font,
 		fontSize: subTitleFontSize,
 		color: colors.white,
-        fontWeight: 'bold'
+		fontWeight: 'bold'
 	}
 });

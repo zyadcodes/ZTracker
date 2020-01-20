@@ -19,6 +19,12 @@ export default {
 	Password: 'Password',
 	EnterYourPasswordDotDotDot: 'Enter your password...',
 
+	//------------------------- Dashboard Screen -------------------------
+	AverageProfitColon: 'Average Profit: ',
+	AverageRevenueColon: 'Average Revenue: ',
+	AverageExpensesColon: 'Average Expenses: ',
+	Hello: 'Hello,',
+
 	//------------------------- Add Screen -------------------------
 	Type: 'Type',
 	Revenue: 'Revenue',

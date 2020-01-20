@@ -128,6 +128,7 @@ export default class historyScreen extends Component {
 		return (
 			<View style={screenStyle.container}>
 				<ScrollView
+					style={{ width: screenWidth }}
 					showsHorizontalScrollIndicator={false}
 					showsVerticalScrollIndicator={false}
 					refreshControl={

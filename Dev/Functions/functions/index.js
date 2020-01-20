@@ -25,7 +25,10 @@ exports.addUserToFirestore = functions.https.onCall(async (request, response) =>
 		.set({
 			name,
 			email,
-			userID
+			userID,
+			averageProfit: 0,
+			averageRevenue: 0,
+			averageExpenses: 0
 		});
 
 	return 0;
@@ -55,7 +58,7 @@ exports.addEntry = functions.https.onCall(async (request, response) => {
 	let expenses = '';
 	let profit = '';
 	if (docGet.exists === false) {
-		doc.set({
+		await doc.set({
 			expenses: 0,
 			revenue: 0,
 			profit: 0,
@@ -75,7 +78,7 @@ exports.addEntry = functions.https.onCall(async (request, response) => {
 	} else {
 		expenses += amount;
 	}
-	profit = (revenue - expenses)
+	profit = revenue - expenses;
 	await doc.update({
 		revenue: revenue,
 		expenses: expenses,
@@ -90,6 +93,34 @@ exports.addEntry = functions.https.onCall(async (request, response) => {
 	await newEntry.update({
 		entryID: newEntry.id
 	});
+
+	//Calculates the new averages and updates the user with the infomation
+	const allMonths = await (
+		await firestore
+			.collection('users')
+			.doc(userID)
+			.collection('months')
+			.get()
+	).docs.map((doc) => doc.data());
+	let averageExpenses = 0;
+	let averageProfit = 0;
+	let averageRevenue = 0;
+	for (const month of allMonths) {
+		averageExpenses += month.expenses;
+		averageProfit += month.profit;
+		averageRevenue += month.revenue;
+	}
+	averageExpenses /= allMonths.length;
+	averageProfit /= allMonths.length;
+	averageRevenue /= allMonths.length;
+	await firestore
+		.collection('users')
+		.doc(userID)
+		.update({
+			averageExpenses,
+			averageProfit,
+			averageRevenue
+		});
 
 	return 0;
 });
@@ -134,6 +165,30 @@ exports.getMonthByID = functions.https.onCall(async (request, response) => {
 	} else {
 		return -1;
 	}
+});
+
+//This function is going to go through all of the months associated with a user and generate three arrays associated
+//with the months. They will be returned as a multidimensional array. The first index will be the profits, the second will
+//be the revenues, and the third will be the expenses.
+exports.getMonthlyData = functions.https.onCall(async (request, response) => {
+	const { userID } = request;
+	const docGet = await firestore
+		.collection('users')
+		.doc(userID)
+		.collection('months')
+		.get();
+	const months = docGet.docs.map((doc) => doc.data());
+
+	const profitArray = [];
+	const revenueArray = [];
+	const expensesArray = [];
+	for (const month of months) {
+		profitArray.push(month.profit);
+		revenueArray.push(month.revenue);
+		expensesArray.push(month.expenses);
+	}
+
+	return [profitArray, revenueArray, expensesArray];
 });
 
 //This function is going to take in a user's ID & then it will return all of the month documents that are with associated

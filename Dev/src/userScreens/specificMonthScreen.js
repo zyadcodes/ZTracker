@@ -128,7 +128,10 @@ export default class specificMonthScreen extends Component {
 		const { isScreenLoading } = this.state;
 		return (
 			<View style={screenStyle.container}>
-				<ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
+				<ScrollView
+					style={{ width: screenWidth }}
+					showsHorizontalScrollIndicator={false}
+					showsVerticalScrollIndicator={false}>
 					<View
 						style={{
 							marginTop: screenHeight * 0.1,
@@ -158,7 +161,7 @@ export default class specificMonthScreen extends Component {
 						<View
 							style={{
 								justifyContent: 'center',
-								alignItems: 'flex-start',
+								alignItems: 'center',
 								marginTop: screenHeight * 0.15
 							}}>
 							<ActivityIndicator size={'large'} animating={true} color={colors.green} />
@@ -168,25 +171,30 @@ export default class specificMonthScreen extends Component {
 							<View
 								style={{
 									marginBottom: screenHeight * 0.075,
-									flexDirection: 'row'
+									flexDirection: 'row',
+									justifyContent: 'space-evenly'
 								}}>
-								<View style={{ marginLeft: screenWidth * 0.06 }}>
+								<View>
 									<Text style={fontStyles.bigTextStyleWhite}>{strings.Revenue}</Text>
 									<View style={{ height: screenHeight * 0.01 }} />
-									<Text style={fontStyles.bigTextStyleWhite}>${this.state.month.revenue}</Text>
+									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.revenue}</Text>
 								</View>
-								<View style={{ marginLeft: screenWidth * 0.075 }}>
+								<View>
 									<Text style={fontStyles.bigTextStyleWhite}>{strings.Expenses}</Text>
 									<View style={{ height: screenHeight * 0.01 }} />
-									<Text style={fontStyles.bigTextStyleWhite}>${this.state.month.expenses}</Text>
+									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.expenses}</Text>
 								</View>
-								<View style={{ marginLeft: screenWidth * 0.09 }}>
+								<View>
 									<Text style={fontStyles.bigTextStyleWhite}>{strings.Profit}</Text>
 									<View style={{ height: screenHeight * 0.01 }} />
-									<Text style={fontStyles.bigTextStyleWhite}>${this.state.month.profit}</Text>
+									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.profit}</Text>
 								</View>
 							</View>
-							<View style={{ width: screenWidth * 0.98 }}>
+							<View
+								style={{
+									width: screenWidth * 0.98,
+									alignSelf: 'center'
+								}}>
 								<Table borderStyle={{ borderWidth: 2, borderColor: colors.green }}>
 									<Row
 										data={this.state.tableTitles}
