@@ -1,4 +1,8 @@
-appcenter codepush release-react -a help.com/ZTracker -d Staging
+To release iOS (From Dev folder): 
+code-push release-react ZTracker ios -t 1.0.0 -d Production 
 
 Production Key: ThgGGkphP0h4iwmnEkLDZVXfg6Z53dkioPuRl
 Staging Key: UQi6Wdwtd1KNg6gSUGJbZ5pHTs8VXsN3hkZ6a
+
+appcenter codepush release-react -a help.com/ZTracker -d Staging
+
