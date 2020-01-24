@@ -9,8 +9,8 @@ import { Icon } from 'react-native-elements';
 import { screenHeight, screenWidth } from 'config/dimensions';
 import colors from 'config/colors';
 import fontStyles from 'config/fontStyles';
-import firebase from 'react-native-firebase';
 import CodePush from 'react-native-code-push';
+import firebase from 'react-native-firebase';
 import ZAlert from '../components/ZAlert';
 
 //Creates the exports the class
@@ -31,7 +31,7 @@ export default class launchScreen extends Component {
 	async componentDidMount() {
 		//Checks and installs CodePush update
 		const update = await CodePush.checkForUpdate();
-		if (update) {
+		if (update !== null) {
 			const status = await update.download();
 			this.setState({
 				willRestart: true,
