@@ -38,7 +38,7 @@ export default class specificMonthScreen extends Component {
 				//Converts the date to a readable format
 				this.convertShortMonthToString(entry.date.substring(entry.date.indexOf('-') + 1)),
 				//Adds the dollar sign to the amount
-				'$' + entry.amount,
+				'$' + entry.amount.toFixed(2),
 				//Capitalizes the first lettter of the type
 				entry.type.charAt(0).toUpperCase() + entry.type.substring(1),
 				//If there are no notes, an empty string
@@ -180,17 +180,17 @@ export default class specificMonthScreen extends Component {
 								<View>
 									<Text style={fontStyles.bigTextStyleWhite}>{strings.Revenue}</Text>
 									<View style={{ height: screenHeight * 0.01 }} />
-									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.revenue}</Text>
+									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.revenue.toFixed(2)}</Text>
 								</View>
 								<View>
 									<Text style={fontStyles.bigTextStyleWhite}>{strings.Expenses}</Text>
 									<View style={{ height: screenHeight * 0.01 }} />
-									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.expenses}</Text>
+									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.expenses.toFixed(2)}</Text>
 								</View>
 								<View>
 									<Text style={fontStyles.bigTextStyleWhite}>{strings.Profit}</Text>
 									<View style={{ height: screenHeight * 0.01 }} />
-									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.profit}</Text>
+									<Text style={fontStyles.bigTextStyleGreen}>${this.state.month.profit.toFixed(2)}</Text>
 								</View>
 							</View>
 							<View

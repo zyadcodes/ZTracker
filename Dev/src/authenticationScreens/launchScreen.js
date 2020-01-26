@@ -10,82 +10,87 @@ import { screenHeight, screenWidth } from 'config/dimensions';
 import colors from 'config/colors';
 import fontStyles from 'config/fontStyles';
 import CodePush from 'react-native-code-push';
+import FirebaseFunctions from 'config/FirebaseFunctions';
 import firebase from 'react-native-firebase';
 import ZAlert from '../components/ZAlert';
 
 //Creates the exports the class
 export default class launchScreen extends Component {
-	//This will get rid of iOS default splash screen
-	UNSAFE_componentWillMount() {
-		SplashScreen.hide();
-	}
+  //This will get rid of iOS default splash screen
+  UNSAFE_componentWillMount() {
+    SplashScreen.hide();
+  }
 
-	//State determining status of code push update
-	state = {
-		willRestart: false,
-		status: ''
-	};
+  //State determining status of code push update
+  state = {
+    willRestart: false,
+    status: ''
+  };
 
-	//This is going to fetch a code push update if there is one, then checks if a user is logged in and goes to
-	//either the splash screen or the dashboard based on that
-	async componentDidMount() {
-		//Checks and installs CodePush update
-		const update = await CodePush.checkForUpdate();
-		if (update !== null) {
-			const status = await update.download();
-			this.setState({
-				willRestart: true,
-				status
-			});
-			return;
-		}
+  //This is going to fetch a code push update if there is one, then checks if a user is logged in and goes to
+  //either the splash screen or the dashboard based on that
+  async componentDidMount() {
+    //Checks and installs CodePush update
+    const update = await CodePush.checkForUpdate();
+    if (update !== null) {
+      const status = await update.download();
+      this.setState({
+        willRestart: true,
+        status
+      });
+      return;
+    }
 
-		let alreadyCalled = false;
-		firebase.auth().onAuthStateChanged(async (user) => {
-			if (alreadyCalled === false) {
-				alreadyCalled = true;
-				if (user) {
-					const { uid } = user;
-					this.props.navigation.push('UserScreens', {
-						userID: uid
-					});
-				} else {
-					this.props.navigation.push('SplashScreen');
-				}
-			}
-		});
-	}
+    let alreadyCalled = false;
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (alreadyCalled === false) {
+        alreadyCalled = true;
+        if (user) {
+          const { uid } = user;
+          const userObject = await FirebaseFunctions.call('getUserByID', { userID: uid });
+          const allMonths = await FirebaseFunctions.call('getAllMonthsByID', { userID: uid });
+          this.props.navigation.push('UserScreens', {
+            userID: uid,
+            user: userObject,
+            allMonths
+          });
+        } else {
+          this.props.navigation.push('SplashScreen');
+        }
+      }
+    });
+  }
 
-	//Renders the screen
-	render() {
-		return (
-			<View style={screenStyle.container}>
-				<View
-					style={{
-						marginTop: screenHeight * 0.1,
-						marginBottom: screenHeight * 0.25,
-						justifyContent: 'center',
-						alignItems: 'center',
-						alignSelf: 'center'
-					}}>
-					<Text style={fontStyles.bigSubTitleStyleWhite}>{strings.ZTracker}</Text>
-				</View>
-				<View style={{ marginBottom: screenHeight * 0.25 }}>
-					<Icon type={'font-awesome'} size={100} color={colors.green} name={'money'} />
-				</View>
-				<ActivityIndicator size={'large'} animating={true} color={colors.green} />
-				{/*All the alerts for this screen*/}
-				<ZAlert
-					isVisible={this.state.willRestart}
-					onPress={async () => {
-						this.setState({ willRestart: false });
-						await this.state.status.install();
-						CodePush.restartApp();
-					}}
-					title={strings.Restart}
-					message={strings.AppWillRestart}
-				/>
-			</View>
-		);
-	}
+  //Renders the screen
+  render() {
+    return (
+      <View style={screenStyle.container}>
+        <View
+          style={{
+            marginTop: screenHeight * 0.1,
+            marginBottom: screenHeight * 0.25,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center'
+          }}>
+          <Text style={fontStyles.bigSubTitleStyleWhite}>{strings.ZTracker}</Text>
+        </View>
+        <View style={{ marginBottom: screenHeight * 0.25 }}>
+          <Icon type={'font-awesome'} size={100} color={colors.green} name={'money'} />
+        </View>
+        <ActivityIndicator size={'large'} animating={true} color={colors.green} />
+        {/*All the alerts for this screen*/}
+        <ZAlert
+          isVisible={this.state.willRestart}
+          onPress={async () => {
+            this.setState({ willRestart: false });
+            await this.state.status.install();
+            CodePush.restartApp();
+          }}
+          title={strings.Restart}
+          message={strings.AppWillRestart}
+        />
+      </View>
+    );
+  }
 }

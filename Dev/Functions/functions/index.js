@@ -171,13 +171,7 @@ exports.getMonthByID = functions.https.onCall(async (request, response) => {
 //with the months. They will be returned as a multidimensional array. The first index will be the profits, the second will
 //be the revenues, and the third will be the expenses.
 exports.getMonthlyData = functions.https.onCall(async (request, response) => {
-	const { userID } = request;
-	const docGet = await firestore
-		.collection('users')
-		.doc(userID)
-		.collection('months')
-		.get();
-	const months = docGet.docs.map((doc) => doc.data());
+	const { months } = request;
 
 	const profitArray = [];
 	const revenueArray = [];

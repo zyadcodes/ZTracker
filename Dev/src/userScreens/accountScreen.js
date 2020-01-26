@@ -16,8 +16,7 @@ import FirebaseFunctions from 'config/FirebaseFunctions';
 export default class accountScreen extends Component {
 	//Fetches the name of the user
 	async componentDidMount() {
-		const { userID } = this.props.navigation.state.params;
-		const user = await FirebaseFunctions.call('getUserByID', { userID });
+		const { user } = this.props.navigation.state.params;
 		this.setState({
 			isScreenLoading: false,
 			name: user.name
